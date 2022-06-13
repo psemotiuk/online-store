@@ -3,16 +3,16 @@ import styles from './styles.module.scss';
 
 interface IProps {
     imgSrc: string;
-    title: string;
+    name: string;
     price: string
 }
 
-const GameCard = ({imgSrc, title, price}: IProps) => {
+const GameCard = ({imgSrc, name, price}: IProps) => {
     console.log('src', imgSrc)
     return (
         <div className={styles.card}>
-            <img className={styles.card__img} src={imgSrc} alt={title} />
-            <p className={styles.card__title}>{title}</p>
+            <img className={styles.card__img} src={imgSrc} alt={name} />
+            <p className={styles.card__title}>{name}</p>
             <p>{price}</p>
         </div>
     );

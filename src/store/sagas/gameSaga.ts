@@ -2,16 +2,18 @@ import {all, takeLatest, takeEvery, put, call, fork} from "redux-saga/effects";
 import {GameActionTypes, IGame} from "../../types/gameTypes";
 import {fetchGamesFail, fetchGamesRequest, fetchGamesSuccess} from "../actions/gameAction";
 import {callApi} from "../../helpers/callApi";
+import {endpoints} from "../../helpers/constants";
 
-const url = 'api/game'
 
 function* fetchGamesSaga() {
     try {
-        const response: Array<IGame> = yield call(callApi, url, 'GET')
-        console.log('response', response)
+        const response: Array<IGame> = yield call(callApi, endpoints.game.getAll, 'GET')
+        console.log('response321321', response)
         yield put(fetchGamesSuccess(response))
-    } catch (e) {
-        yield put(fetchGamesFail('error'))
+        localStorage.setItem('games', JSON.stringify(response))
+    } catch (e: any) {
+        console.log('errorInCatch', e)
+        yield put(fetchGamesFail(e.message))
     }
 }
 

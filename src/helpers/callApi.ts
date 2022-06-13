@@ -9,6 +9,7 @@ export const callApi = (endpoint: string, method: string, options?: Object) => {
                 return response.data.rows
             }
         ).catch((error) => {
+            console.log('offlineerror')
             throw error
         })
 

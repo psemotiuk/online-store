@@ -5,7 +5,7 @@ import Main from "../components/base/Main/Main";
 const Home = () => {
     return (
         <div>
-            <Header/>
+            <Header error={null}/>
             <Main/>
         </div>
     );

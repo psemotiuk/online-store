@@ -6,12 +6,16 @@ import {fetchGamesRequest, fetchGamesSuccess} from "./store/actions/gameAction";
 import Home from "./pages/Home";
 import AppRouter from "./routes";
 import Header from "./components/base/Header/Header";
+import {GamesState} from "./types/gameTypes";
 
 
 const App = () => {
-    const games = useSelector((state: { games: { games: [] } }) => state.games)
+    const games: GamesState = useSelector((state: any) => state.games)
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        console.log('NavigatorIsOnline', navigator.onLine)
+    }, [])
     //
     // useEffect(() => {
     //     dispatch(fetchGamesRequest())
@@ -22,7 +26,7 @@ const App = () => {
     // }, [games])
     return (
         <>
-            <Header/>
+            <Header error={games.error}/>
             <AppRouter/>
         </>
 
